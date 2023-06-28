@@ -45,4 +45,34 @@ class App extends Component {
         })
       }
     } else {
-      window.alert('Voting
+      window.alert('Voting contract not deployed to detected network.')
+    }
+  }
+
+  constructor(props) {
+    super(props)
+    this.state = { 
+      account: '', 
+      candidates: [], 
+      candidatesCount: 0 
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Decentralized Voting Application</h1>
+        { this.state.candidates.map((candidate, key) => {
+          return(
+            <div key={key}>
+              <p>{candidate.name}</p>
+              <p>{candidate.voteCount} votes</p>
+            </div>
+          )
+        })}
+      </div>
+    );
+  }
+}
+
+export default App;
