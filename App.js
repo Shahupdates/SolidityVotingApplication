@@ -49,15 +49,31 @@ class App extends Component {
     }
   }
 
-  constructor(props) {
-    super(props)
-    this.state = { 
-      account: '', 
-      candidates: [], 
-      candidatesCount: 0 
-    }
+constructor(props) {
+  super(props)
+  this.state = { 
+    account: '', 
+    candidates: [], 
+    candidatesCount: 0,
+    isAuthenticated: false
   }
+  this.handleLogin = this.handleLogin.bind(this);
+  this.handleLogout = this.handleLogout.bind(this);
+}
 
+handleLogin() {
+  // Authenticate the user and set state.
+  // This could involve interacting with an OAuth provider,
+  // or could be as simple as checking for the presence of a web3 account.
+  // If using Metamask, accounts are available at this.state.web3.eth.getAccounts().
+  // For now, we'll just switch the state.
+  this.setState({ isAuthenticated: true });
+}
+
+handleLogout() {
+  // Log out the user and set state.
+  this.setState({ isAuthenticated: false });
+}
   render() {
     return (
       <div>
